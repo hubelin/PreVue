@@ -24,14 +24,13 @@ export default {
   computed: mapState(['projects', 'activeTab']),
   created() {
     Mousetrap.bind(['command+t', 'command+t'], () => {
-      console.log('triggered');
       this.$store.dispatch(deleteProjectTab, this.activeTab);
     });
   },
   methods: {
     changeTab(idx) {
       let currTab = this.$store.state.activeTab;
-      //STORE PREV TAb IN LOCAL FORAGE IF NOT EXIST
+      //STORE PREV TAB IN LOCAL FORAGE IF NOT EXIST
       this.saveProjectToSession(this.projects[currTab].filename);
 
       this.$store.dispatch(changeActiveTab, idx);
@@ -49,7 +48,6 @@ export default {
               HomeView: []
             });
           } else {
-            console.log(value);
             this.$store.dispatch(setComponentMap, value.componentMap);
             this.$store.dispatch(setRoutes, value.routes);
           }

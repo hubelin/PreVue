@@ -1,5 +1,4 @@
 <template>
-  <!-- <button class="save-icon" >SAVE PROJECT</button> -->
   <button @click="saveProjectJSON">
     <i class="fas fa-save fa-lg"></i>
 
@@ -24,13 +23,11 @@ export default {
   },
   methods: {
     parseFileName(file) {
-      //'asdf/asdff/sdf.txt -> sdf.txt
       return file.split('/').pop();
     },
     parseAndDelete(htmlList) {
       htmlList.forEach(element => {
         if (element.children.length > 0) {
-          console.log('in recurse');
           this.parseAndDelete(element.children);
         }
         delete element._vm;
@@ -46,12 +43,10 @@ export default {
       });
     },
     saveProjectJSON() {
-      console.log('THIS ONE');
       let projectLocation = this.$store.state.projects[
         this.$store.state.activeTab
       ].lastSavedLocation;
       if (projectLocation) {
-        console.log('IN SAVE LOCATION', this.$store.state);
         let state = this.$store.state;
         let routes = state.routes;
         for (let view in routes) {
@@ -61,18 +56,16 @@ export default {
           });
         }
         let componentMap = this.$store.state.componentMap;
-        console.log('compmap', componentMap);
+
         for (let component in componentMap) {
           if (componentMap[component].htmlList) {
             let comphtml = componentMap[component].htmlList;
-            console.log('COMPHTML', comphtml);
+
             this.parseAndDelete(comphtml);
           }
         }
 
         fs.writeFileSync(projectLocation, JSON.stringify(state));
-
-        console.log('PROJECT SAVED TO LAST SAVED LOCATION');
       } else {
         ipc.send('show-save-json-dialog');
       }
@@ -121,7 +114,6 @@ export default {
           console.log('saved ', fileName, 'to local forage');
           console.log('result is', result);
         });
-      console.log('PROJECT SAVED AS A JSON OBJECT!');
     });
   }
 };

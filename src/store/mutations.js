@@ -72,19 +72,15 @@ const mutations = {
     state.componentMap = newObj;
   },
   [types.SET_COMPONENT_MAP]: (state, payload) => {
-    console.log(payload);
     state.componentMap = payload;
   },
   [types.DELETE_SELECTED_ELEMENT]: (state, payload) => {
     state.selectedElementList.splice(payload, 1);
   },
   [types.SET_STATE]: (state, payload) => {
-    console.log('SETTING STATE');
-    console.log(payload);
     Object.assign(state, payload);
   },
   [types.ADD_PROJECT]: (state, payload) => {
-    console.log('PUSHING ', payload);
     state.projects.push(payload);
     state.projectNumber++;
   },

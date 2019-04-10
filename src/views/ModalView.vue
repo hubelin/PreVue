@@ -29,9 +29,8 @@ export default {
     EditQueue
   },
   mounted() {
-    console.log('CHILDREN', this.children);
     this.updateComponentChildrenMultiselectValue(this.children);
-    console.log('MODAL IS OPEN');
+
     this.updateOpenModal(true);
   },
   computed: {
@@ -42,7 +41,6 @@ export default {
       'routes'
     ]),
     children() {
-      console.log('activeComponent', this.activeComponent);
       return this.componentMap[this.activeComponent].children.reduce(
         (acc, curr) => {
           return acc.concat(curr);
@@ -56,30 +54,6 @@ export default {
       'updateComponentChildrenMultiselectValue',
       'updateOpenModal'
     ])
-    //   convert() {
-    //     console.log('CONVERT CALLED');
-    //     let list = this.componentMap[this.activeComponent].htmlList;
-    //     console.log(list);
-    //     this.parseAndDelete(list);
-    //   },
-    //   parseAndDelete(htmlList) {
-    //     htmlList.forEach(element => {
-    //       if (element.children.length > 0) {
-    //         console.log('in recurse');
-    //         this.parseAndDelete(element.children);
-    //       }
-    //       delete element._vm;
-    //       delete element.parent;
-    //       delete element.open;
-    //       delete element.active;
-    //       delete element.style;
-    //       delete element.class;
-    //       delete element.innerStyle;
-    //       delete element.innerClass;
-    //       delete element.innerBackStyle;
-    //       delete element.innerBackClass;
-    //     });
-    //   }
   }
 };
 </script>

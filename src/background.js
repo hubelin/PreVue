@@ -91,8 +91,6 @@ function showExportDialog(event) {
       nameFieldLabel: 'Application Name'
     },
     result => {
-      // console.log(result);
-      // if (nameLabel === 'JSON Name') event.sender.send('json-location', result);
       event.sender.send('export-project-location', result);
     }
   );

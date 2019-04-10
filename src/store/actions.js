@@ -88,7 +88,6 @@ const actions = {
     commit(types.UPDATE_COMPONENT_CHILDREN_MULTISELECT_VALUE, payload);
   },
   [types.updateActiveComponentChildrenValue]: ({ commit }, payload) => {
-    console.log('payload', payload);
     commit(types.UPDATE_ACTIVE_COMPONENT_CHILDREN_VALUE, payload);
   },
   [types.updateComponentNameInputValue]: ({ commit }, payload) => {

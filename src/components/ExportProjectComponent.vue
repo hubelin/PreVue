@@ -1,5 +1,4 @@
 <template>
-  <!-- <i class="fas fa-file-export fa-lg" @click="exportProject"></i> -->
   <button @click="exportProject">
     <i class="fas fa-file-export fa-lg"></i>
 
@@ -209,19 +208,14 @@ export default {
     ipc.on('export-project-location', (event, data) => {
       if (!fs.existsSync(data)) {
         fs.mkdirSync(data);
-        console.log('FOLDER CREATED!');
+
         fs.mkdirSync(path.join(data, 'public'));
         fs.mkdirSync(path.join(data, 'src'));
         fs.mkdirSync(path.join(data, 'src', 'assets'));
         fs.mkdirSync(path.join(data, 'src', 'components'));
         fs.mkdirSync(path.join(data, 'src', 'views'));
       }
-      // fs.copySync(
-      //   path.join(remote.app.getAppPath(), '../vue-boiler-plate-routes/'),
-      //   data
-      // );
-      // .then(() => console.log('success!'))
-      // .catch(err => console.err(err));
+
       this.createIndexFile(data);
       this.createMainFile(data);
       this.createBabel(data);

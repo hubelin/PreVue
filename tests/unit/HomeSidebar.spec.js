@@ -22,8 +22,6 @@ describe('HomeSidebar.vue', () => {
     const wrapper = shallowMount(HomeSidebar, {
       propsData: { onClose }
     });
-    console.log(wrapper.html());
-    // expect(wrapper.contains('#input')).toBe(true);
   }),
     it('contains a button that clicks', () => {
       const test = jest.fn();
@@ -33,7 +31,6 @@ describe('HomeSidebar.vue', () => {
       });
       wrapper.find('button').trigger('click');
       expect(test).toBeCalled();
-      // expect(wrapper.contains('button')).toBe(true);
     }),
     it('contains Icons', () => {
       const wrapper = shallowMount(HomeSidebar);
@@ -45,11 +42,10 @@ describe('HomeSidebar.vue', () => {
       store,
       localVue
     });
-    // wrapper.find('[data-component-name]').setValue('Hubert');
-    // input.debug();
+
     const button = wrapper.find('button');
     button.trigger('click');
-    // expect(button).toHaveBeenClicked();
+
     expect(actions.handleClick).toHaveBeenCalled();
   });
 });

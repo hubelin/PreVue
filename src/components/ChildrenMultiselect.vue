@@ -34,7 +34,7 @@ export default {
     options() {
       const routes = Object.keys(this.routes);
       const exceptions = new Set(['App', this.activeComponent, ...routes]);
-      console.log('exceptions', exceptions);
+
       return Object.keys(this.componentMap).filter(component => {
         if (!exceptions.has(component)) return component;
       });
@@ -46,7 +46,6 @@ export default {
       'updateActiveComponentChildrenValue'
     ]),
     handleSelect(value) {
-      console.log('VALUE', value);
       if (this.modalOpen) this.updateActiveComponentChildrenValue(value);
       this.updateComponentChildrenMultiselectValue(value);
     }
